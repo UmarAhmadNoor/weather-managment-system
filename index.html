@@ -1,48 +1,29 @@
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '83fb3e4919mshe4f4f8a82a9c70bp1c47c1jsn2b6d9a181281',
-		'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
-	}
-};
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+</head>
+<body>
+    <form id="weatherForm">
+        <input type="text" id="city" placeholder="Enter city name" required>
+        <button type="submit" id="submit">Get Weather</button>
+    </form>
 
-const getweather = (city) => {
-    const cityname = document.getElementById('cityname');
-    const temp = document.getElementById('temp');
-    const feels_like = document.getElementById('feels_like');
-    const humidityy = document.getElementById('humidityy');
-    const min_temp = document.getElementById('min_temp');
-    const max_temp = document.getElementById('max_temp');
-    const wind_speed = document.getElementById('wind_speed');
-    const wind_degrees = document.getElementById('wind_degrees');
-    const sunrise = document.getElementById('sunrise');
-    const sunset = document.getElementById('sunset');
+    <div>
+        <h1 id="cityname"></h1>
+        <p>Temperature: <span id="temp"></span>°C</p>
+        <p>Feels Like: <span id="feels_like"></span>°C</p>
+        <p>Humidity: <span id="humidityy"></span>%</p>
+        <p>Min Temperature: <span id="min_temp"></span>°C</p>
+        <p>Max Temperature: <span id="max_temp"></span>°C</p>
+        <p>Wind Speed: <span id="wind_speed"></span> km/h</p>
+        <p>Wind Degrees: <span id="wind_degrees"></span>°</p>
+        <p>Sunrise: <span id="sunrise"></span></p>
+        <p>Sunset: <span id="sunset"></span></p>
+    </div>
 
-    cityname.innerHTML = city;
-
-    fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=' + city, options)
-        .then(response => response.json())
-        .then(response => {
-            temp.innerHTML = response.temp;
-            feels_like.innerHTML = response.feels_like;
-            humidityy.innerHTML = response.humidity;
-            min_temp.innerHTML = response.min_temp;
-            max_temp.innerHTML = response.max_temp;
-            wind_speed.innerHTML = response.wind_speed;
-            wind_degrees.innerHTML = response.wind_degrees;
-            sunrise.innerHTML = response.sunrise;
-            sunset.innerHTML = response.sunset;
-            console.log(response);
-        })
-        .catch(error => console.error('Error:', error));
-};
-
-const submit = document.getElementById('submit');
-const cityInput = document.getElementById('city');
-
-submit.addEventListener('click', (e) => {
-    e.preventDefault();
-    getweather(cityInput.value);
-});
-
-getweather('Faisalabad');
+    <script src="script.js"></script>
+</body>
+</html>
